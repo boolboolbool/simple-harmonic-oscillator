@@ -11,10 +11,15 @@ export function SetUpInputHandlers(state) {
 
     // add input handles
     massInput.addEventListener('input', function() {
-        state.mass = parseFloat(massInput.value);
+        let m = parseFloat(massInput.value);
+        if (!isNaN(m)) {
+            state.mass = m;
+        }
     });
     springConstantInput.addEventListener('input', function() {
-        state.springConstant = parseFloat(
-            springConstantInput.value);
+        let c = parseFloat(springConstantInput.value);
+        if (!isNaN(c)) {
+            state.springConstant = c;
+        }
     });
 }
