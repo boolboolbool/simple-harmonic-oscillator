@@ -23,7 +23,7 @@ export default class Graphics {
     }
 
     // Return the middle X position of the box
-    boxMiddleX(position) {
+    #boxMiddleX(position) {
         let boxSpaceWidth = this.canvas.width - this.boxSize;
         return boxSpaceWidth * (position + 1) / 2 + this.boxSize;
     }
@@ -32,8 +32,8 @@ export default class Graphics {
     // Position argument is the box position and varies from -1 to 1.
 	// Value 0 corresponds to the central position,
     // while -1 and 1 are the left and right respectively.
-    drawSpring(position) { 
-		var springEndX = this.boxMiddleX(position) - (this.boxSize / 2),
+    #drawSpring(position) {
+		var springEndX = this.#boxMiddleX(position) - (this.boxSize / 2),
 	 	    springTopY = (this.canvasHeight - this.springInfo.height) / 2,
 			springEndY = this.canvasHeight / 2,
 			canvasMiddleX = this.canvas.width / 2,
@@ -68,10 +68,10 @@ export default class Graphics {
 	// Draw a box at position. Position is a value from -1 to 1.
 	// Value 0 corresponds to the central position,
     // while -1 and 1 are the left and right respectively.
-    drawBox(position) {
+    #drawBox(position) {
 		var startY = Math.floor(
             (this.canvasHeight - this.boxSize) / 2);
-		var startX = this.boxMiddleX(position) - this.boxSize;
+		var startX = this.#boxMiddleX(position) - this.boxSize;
 
 		// Rectangle
 		this.context.beginPath();
@@ -88,7 +88,7 @@ export default class Graphics {
     }
 
 	// Draw vertical line in the middle
-	drawMiddleLine() {
+    #drawMiddleLine() {
         var middleX = Math.floor(this.canvas.width / 2);
 
 	    this.context.beginPath();
@@ -108,17 +108,17 @@ export default class Graphics {
 	    this.context.clearRect(0, 0,
                                this.canvas.width,
                                this.canvas.height);
-		this.drawMiddleLine();
-		this.drawSpring(position);
-		this.drawBox(position);
+		this.#drawMiddleLine();
+		this.#drawSpring(position);
+		this.#drawBox(position);
 	}
 	
-    hideCanvasNotSupportedMessage() {
+    #hideCanvasNotSupportedMessage() {
 		document.getElementById("HarmonicOscillator-notSupportedMessage").style.display ='none';
 	}
     
     // Resize canvas to fill the width of container
-	fitToContainer() {
+    #fitToContainer() {
         this.canvas.style.width='100%';
 		this.canvas.style.height= this.canvasHeight + 'px';
 		this.canvas.width  = this.canvas.offsetWidth;
@@ -141,13 +141,13 @@ export default class Graphics {
 
         // If we got to this point it means the browser can draw
         // Hide the old browser message
-        this.hideCanvasNotSupportedMessage();
+        this.#hideCanvasNotSupportedMessage();
 
         // Update the size of the canvas
-        this.fitToContainer();
+        this.#fitToContainer();
 
         var redrawScene = () => {
-            this.fitToContainer();
+            this.#fitToContainer();
             this.drawScene(boxPosition);
         }
         // add handler to redraw scene if page is resized

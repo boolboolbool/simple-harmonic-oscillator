@@ -12,8 +12,9 @@ export default class Simulation {
 
         this.animate();
     }
+
     animate() {
-        this.physics.updateBoxPosition();
+        this.physics.updateBoxState();
         this.graphics.drawScene(this.physics.state.boxPosition);
         window.requestAnimationFrame(this.animate.bind(this));
     }

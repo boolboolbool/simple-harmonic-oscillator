@@ -1,19 +1,19 @@
 export function SetUpInputHandlers(state) {
     // get user inputs
-    let massInput = document.getElementById(
-        "HarmonicOscillator-mass");
+    let boxMassInput = document.getElementById(
+        "HarmonicOscillator-boxMass");
     let springConstantInput = document.getElementById(
         "HarmonicOscillator-springConstant");
 
     // Set initial values
-    massInput.value = state.mass;
+    boxMassInput.value = state.boxMass;
     springConstantInput.value = state.springConstant;
 
     // add input handles
-    massInput.addEventListener('input', function() {
-        let m = parseFloat(massInput.value);
+    boxMassInput.addEventListener('input', function() {
+        let m = parseFloat(boxMassInput.value);
         if (!isNaN(m)) {
-            state.mass = m;
+            state.boxMass = m;
         }
     });
     springConstantInput.addEventListener('input', function() {
