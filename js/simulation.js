@@ -6,16 +6,9 @@ export default class Simulation {
     constructor() {
         console.log('Constructing simulation...');
         this.physics = new Physics();
-        this.graphics = new Graphics();
         SetUpInputHandlers(this.physics.state);
+        this.graphics = new Graphics(this.physics.state.boxPosition);
         console.log('Simulation constructed!');
-        
-        // Redraw the scene if page is resized
-        window.addEventListener('resize', function(event) {
-            this.graphics.fitToContainer();
-            this.graphics.drawScene(this.physics.state.boxPosition);
-        });
-        
 
         this.animate();
     }

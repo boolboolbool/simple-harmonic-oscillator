@@ -126,7 +126,7 @@ export default class Graphics {
 	}
 
     // Create canvas for drawing and call success argument
-    init(success) {
+    init(boxPosition) {
         // Find the canvas HTML element
         this.canvas = document.querySelector(".HarmonicOscillator-canvas");
 
@@ -146,7 +146,11 @@ export default class Graphics {
         // Update the size of the canvas
         this.fitToContainer();
 
-        // Execute success callback function
-        success();
+        var redrawScene = () => {
+            this.fitToContainer();
+            this.drawScene(boxPosition);
+        }
+        // add handler to redraw scene if page is resized
+        window.addEventListener('resize', redrawScene);
     }
 }
