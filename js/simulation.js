@@ -14,19 +14,14 @@ export default class Simulation {
             this.graphics.drawScene(this.physics.state.boxPosition);
         });
         
+
+        this.animate();
+    }
+    animate() {
+        this.physics.updateBoxPosition();
+        this.graphics.drawScene(this.physics.state.boxPosition);
+        window.requestAnimationFrame(this.animate.bind(this));
     }
 }
 
 var simulation = new Simulation();
-
-const animate = () => {
-    console.log('updating box position...');
-    simulation.physics.updateBoxPosition();
-    console.log('box position: ', simulation.physics.state.boxPosition);
-    console.log('drawing scene...');
-    simulation.graphics.drawScene(simulation.physics.state.boxPosition);
-    console.log('reanimation request...');
-    window.requestAnimationFrame(animate);
-}
-
-window.requestAnimationFrame(animate);
