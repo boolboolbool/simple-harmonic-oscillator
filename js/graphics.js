@@ -71,7 +71,7 @@ export default class Graphics {
     drawBox(position) {
 		var startY = Math.floor(
             (this.canvasHeight - this.boxSize) / 2);
-		var startX = this.boxMiddleX(position) - this.boxSize / 2;
+		var startX = this.boxMiddleX(position) - this.boxSize;
 
 		// Rectangle
 		this.context.beginPath();
