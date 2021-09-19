@@ -1,11 +1,13 @@
 import Physics from './physics.js';
 import Graphics from './graphics.js';
+import { SetUpInputHandlers } from './input-handler.js';
 
 export default class Simulation {
     constructor() {
         console.log('Constructing simulation...');
         this.physics = new Physics();
         this.graphics = new Graphics();
+        SetUpInputHandlers(this.physics.state);
         console.log('Simulation constructed!');
         
         // Redraw the scene if page is resized
