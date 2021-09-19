@@ -16,9 +16,17 @@ git clone https://github.com/boolboolbool/simple-harmonic-oscillator.git
 
 ## Usage
 
+To setup and access a local server page.
+
 ```bash
 python3 -m http.server
+
+xdg-open http://0.0.0.0:8000/harmonic.html
 ```
+
+Other devices on the network may see the page by replacing the
+`0.0.0.0` with your machine's IP.
+
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
