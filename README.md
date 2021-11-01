@@ -29,4 +29,4 @@ Other devices on the network may see the page by replacing the
 
 
 ## License
-[MIT](https://choosealicense.com/licenses/mit/)
+[MIT](LICENSE)
